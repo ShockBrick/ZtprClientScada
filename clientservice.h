@@ -114,9 +114,6 @@ private:
     QString *IpAdressSlot=new QString;/**< \brief Zmienna zawierająca IP serwer.*/
     QString *PortNumberSlot=new QString;/**< \brief Zmienna zawierająca numer portu serwera.*/
 
-
-
-    std::string pommmmmm;
 };
 
 

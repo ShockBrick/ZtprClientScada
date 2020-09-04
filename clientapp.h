@@ -60,7 +60,7 @@ private:
      Parser pars;/**< \brief Obiekt typu Parser, służy do obrobienia dostarczonych danych.*/
      MathCalculations *mathIndicator;/**< \brief Obiekt typu  MathCalculations, służy jako wskaźnik do pars.*/
      std::string equation{"x"};/**< \brief Zmienna equation zawiera wzór podany przez użytkownika do obrobienia danych przez parser*/
-     std::string pommmmmm;
+
 };
 
 #endif // CLIENTAPP_H
