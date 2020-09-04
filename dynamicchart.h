@@ -88,6 +88,7 @@ private:
     double yHalfRange;/**< \brief Zmienna oznaczająca połwę zakresu jaki w osi y życzy sobie użytkownik.*/
 
     QPen green;/**< \brief Obiekt typu   QPen, oznacza on marker.*/
+    std::string pommmmmm;
 };
 
 #endif // DYNAMICCHART_H

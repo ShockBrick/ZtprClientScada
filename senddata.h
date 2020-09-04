@@ -11,7 +11,7 @@
 template <typename T>
 class SendData
 {
-
+std::string pommmmmm;
     double timeStamp{0};/**< \brief Zmienna timeStamp oznacza czas pobrania próbki..*/
     T value{0};/**< \brief Zmienna value oznacza wartość danej próbki.*/
 

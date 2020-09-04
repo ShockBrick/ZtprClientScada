@@ -99,7 +99,7 @@ private:
     //To change ip adress
     QString *IpAdressSlot;/**< \brief Obiekt typu QString, zawiera adres Ip*/
     QString *PortNumberSlot;/**< \brief Obiekt typu QString, zawiera numer portu serwera.*/
-
+std::string pommmmmm;
 };
 
 #endif // CLIENTGUI_H
