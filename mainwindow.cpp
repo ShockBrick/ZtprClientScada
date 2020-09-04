@@ -103,6 +103,11 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
     parserDescription->setText("The formula may contain numbers, \"*\", \"/\", \"+\" and \"-\".\n By means of \"x\" we present in the formula a variable downloaded from the server.");
 
 
+    QLabel *help = new QLabel();
+    help->setText("The formula may contain numbers, \"*\", \"/\", \"+\" and \"-\".\n By means of \"x\" we present in the formula a variable downloaded from the server.");
+
+
+
     vlay->addWidget(colorOfMarkerLabel,1,0);
     vlay->addWidget(colorOfMarkerComboBox,2,0);
     vlay->addWidget(sizeOfAxisXLabel,1,1);
