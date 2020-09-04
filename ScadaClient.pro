@@ -1,9 +1,10 @@
 QT -= gui
 
-
 CONFIG += c++11 console
 CONFIG -= app_bundle
+QT += charts
 
+QT += widgets quick
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -19,8 +20,10 @@ SOURCES += \
         clientapp.cpp \
         clientgui.cpp \
         clientservice.cpp \
+        dynamicchart.cpp \
         main.cpp \
-        scadaprogramme.cpp
+        mainwindow.cpp \
+        parser.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,20 +34,10 @@ HEADERS += \
     clientapp.h \
     clientgui.h \
     clientservice.h \
-    scadaprogramme.h \
+    dynamicchart.h \
+    mainwindow.h \
+    mathcalculations.h \
+    parser.h \
     senddata.h
 
-@
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QT += core
-@
-
-@
-QT += network
-@
-
-
-@
-QT += widgets
-@

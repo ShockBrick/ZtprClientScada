@@ -1,21 +1,15 @@
 #include "clientgui.h"
 
+#include <QtWidgets>
+#include<QMessageBox>
 
-
-
-
-
-
-//ClientGui::ClientGui()
-//{
-
-//}
 
 ClientGui::ClientGui(QWidget *parent)
     : QDialog(parent)
     , hostCombo(new QComboBox)
     , portLineEdit(new QLineEdit)
-    , connectButton(new QPushButton(tr("Connect")))
+    , connectButton(new QPushButton(tr("Connect and start reading")))
+    , readButton(new QPushButton(tr("Stop")))
 {
     portLineEdit->setValidator(new QIntValidator(1,65535,this));
 
@@ -23,33 +17,26 @@ ClientGui::ClientGui(QWidget *parent)
     hostLabel->setBuddy(hostCombo);
     auto portLabel = new QLabel(tr("S&erver port:"));
     portLabel->setBuddy(portLineEdit);
-    statusLabel = new QLabel(tr("This examples requires that you run the "
-                                "Scada Server as well."));
-
+    statusLabel = new QLabel;
+    setStatusLabel("This examples requires that you run the "
+                   "Scada Server as well.");
     connectButton->setDefault(true);
     connectButton->setEnabled(true);
+
+    readButton->setDefault(true);
+    readButton->setEnabled(true);
+
 
     auto quitButton = new QPushButton(tr("Quit"));
 
     auto buttonBox = new QDialogButtonBox;
+    buttonBox->addButton(readButton, QDialogButtonBox::ActionRole);
     buttonBox->addButton(connectButton, QDialogButtonBox::ActionRole);
     buttonBox->addButton(quitButton, QDialogButtonBox::RejectRole);
 
+    connect(readButton, &QAbstractButton::clicked,this, &ClientGui::startReadData);
     connect(connectButton, &QAbstractButton::clicked,this, &ClientGui::changeIpPort);
     connect(quitButton, &QAbstractButton::clicked, this, &QWidget::close);
-//    connect(hostCombo, &QComboBox::editTextChanged, this, &ClientGui::changeIPAdressCombo);
-//    connect(portLineEdit, &QLineEdit::textChanged,this, &ClientGui::changePortLine);
-//    connect(konefka,SIGNAL(textChanged(QString)), this, &ClientGui::changeIPAdressString);
-//    connect(portLineEdit, &QLineEdit::textChanged, this, &Client::enableGetFortuneButton);
-//    connect(getFortuneButton, &QAbstractButton::clicked,this, &Client::requestNewFortune);
-
-////! [2] //! [3]
-//    connect(tcpSocket, &QIODevice::readyRead, this, &Client::readFortune);
-////! [2] //! [4]
-//    connect(tcpSocket, QOverload<QAbstractSocket::SocketError>::of(&QAbstractSocket::error),
-////! [3]
-//            this, &Client::displayError);
-////! [4]
 
     QGridLayout *mainLayout = nullptr;
     if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) {
@@ -91,9 +78,19 @@ void ClientGui::fromHostVectorToHostCombo(std::vector<std::string> hostVector)
 void ClientGui::setIpPortSlot( QString *IpAdressSlotFromService,QString *PortNumberSlotFromService)
 {
     IpAdressSlot=IpAdressSlotFromService;
-       std::cout<<"gui IP: "<<IpAdressSlot<<std::endl;
-       PortNumberSlot=PortNumberSlotFromService;
-       std::cout<<"gui Port: "<<PortNumberSlot<<std::endl;
+    PortNumberSlot=PortNumberSlotFromService;
+}
+
+void ClientGui::setStatusLabel(std::string sLabel)
+{
+    const char * qstr = sLabel.c_str();
+    statusLabel->setText(tr(qstr));
+}
+
+void ClientGui::messageB(std::string mesg)
+{
+    QString QMesg = QString::fromStdString(mesg);
+    QMessageBox::information(this,tr("Scada Client"),QMesg);
 }
 
 
@@ -101,24 +98,14 @@ void ClientGui::setIpPortSlot( QString *IpAdressSlotFromService,QString *PortNum
 
 void ClientGui::changeIpPort()
 {
-
     if( !hostCombo->currentText().isEmpty() && !portLineEdit->text().isEmpty() )
     {
         *IpAdressSlot = hostCombo->currentText();
         QString konefka=*IpAdressSlot;
-        std::cout<<"IPAdresss"<<konefka.toUtf8().constData()<<std::endl;
-        //        *IpAdressSlot = konefka;
-        //        *IpAdressSlot = hostCombo->currentText();
-
-        *PortNumberSlot = portLineEdit->text();//.toInt()
+        *PortNumberSlot = portLineEdit->text();
         konefka=*PortNumberSlot;
-        std::cout<<"Port Number:  "<<konefka.toUtf8().constData()<<std::endl;
-        //        *IpAdressSlot = konefka;
-        //        *IpAdressSlot = hostCombo->currentText();
         emit changedIpPort();
     }
-
-
 }
 
 
