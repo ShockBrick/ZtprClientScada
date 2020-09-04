@@ -7,7 +7,7 @@
 #include <exception>
 /** Klasa abstrakcyjna.**/
 class MathCalculations
-{
+{std::string pom;
 public:
     virtual void makeQueue( )=0;//będę musiał za każdym razem tworzyć bo w funkcji countResult czyszczę equationRPN
     virtual void setEquatequationInfix(std::string pom)=0;

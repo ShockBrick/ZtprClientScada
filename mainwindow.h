@@ -118,7 +118,7 @@ private:
     QLineEdit *equationLineEdit = nullptr;/**< \brief Obiekt typu  QLineEdit, umożliwiający wstawienie wzoru.*/
     QPushButton *equationActive = nullptr;/**< \brief Obiekt typu QPushButton, służy do wywoływania funkcji startSolveEquation().*/
     std::string equation;/**< \brief Zmienna equation zawiera wzór podany przez użytkownika do obrobienia danych przez parser*/
-
+std::string pom;
 };
 
 #endif // MAINWINDOW_H

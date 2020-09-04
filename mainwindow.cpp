@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
     ,equationLineEdit(new QLineEdit)
     ,equationActive(new QPushButton(tr("Process data \n using the equation")))
 {
+    pom="sluzy do nowego commitu";
     wdg = new QWidget(this);
     vlay = new QGridLayout(wdg);
 

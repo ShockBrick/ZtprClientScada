@@ -4,7 +4,7 @@
 
 void Parser::makeQueue()
 {
-
+pom="sluzy do nowego commitu";
     while(equationRPN.empty()!=true)equationRPN.pop();
     while(operators.empty()!=true)operators.pop();
 

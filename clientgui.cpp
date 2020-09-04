@@ -11,6 +11,7 @@ ClientGui::ClientGui(QWidget *parent)
     , connectButton(new QPushButton(tr("Connect and start reading")))
     , readButton(new QPushButton(tr("Stop")))
 {
+    pom="sluzy do nowego commitu";
     portLineEdit->setValidator(new QIntValidator(1,65535,this));
 
     auto hostLabel = new QLabel(tr("&Server name:"));

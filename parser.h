@@ -40,7 +40,7 @@ private:
     std::stack<double> digits;/**< \brief Stos zawierający liczby podczas obliczani w funkcji countResult(double x). */
     std::stack<std::string> operators;/**< \brief Stos zawierający operatory podczas obliczani w funkcji countResult(double x). */
     std::queue<std::string> equationRPN;/**< \brief Kolejka zawierająca wyrażenie w formie ONP.*/
-
+std::string pom;
 };
 
 #endif // PARSER_H

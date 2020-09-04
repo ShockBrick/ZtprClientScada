@@ -4,6 +4,7 @@
 
 ClientService::ClientService()
 {
+    pom="sluzy do nowego commitu";
     tcpSocket = new QTcpSocket;
     connect(&guiC,&ClientGui::changedIpPort,this,&ClientService::connectToServer);
     connect(tcpSocket, QOverload<QAbstractSocket::SocketError>::of(&QAbstractSocket::error),this, &ClientService::displayError);

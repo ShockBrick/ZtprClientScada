@@ -2,6 +2,7 @@
 
 ClientApp::ClientApp():ClientService()
 {
+    pom="sluzy do nowego commitu";
     mathIndicator=&pars;
     mainWin.show();
     connect(this,&ClientApp::dataWereReceived,this,&ClientApp::updateMainWindowVector);//ClientService otrzymuje dane z serwera i dane mają być wyświetlone, więc przenoszone są do MainWnidow

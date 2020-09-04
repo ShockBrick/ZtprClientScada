@@ -18,6 +18,7 @@ DynamicChart::DynamicChart(QGraphicsItem *parent, Qt::WindowFlags wFlags): QChar
     yBegin(-1),
     yEnd(1)
 {
+    pom="sluzy do nowego commitu";
 QObject::connect(this, &DynamicChart::updateChart, this, &DynamicChart::handleTimeout);
     m_series = new QSplineSeries(this);
     green.setWidth(3);
